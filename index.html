@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17243b">
+  <meta name="description" content="ابزار محلی هدرا برای ساخت پرامپت تحلیل پیج اینستاگرام و آماده‌سازی گزارش فارسی">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>هدرا | تحلیل هوشمند پیج</title>
+</head>
+<body>
+  <header class="topbar"><div class="brand-mark">H</div><div><h1>هدرا | تحلیل هوشمند پیج</h1><p>تحلیل محتوا، شناسایی فرصت‌ها و پیشنهاد مسیر رشد</p></div></header>
+  <main class="wrap">
+    <div class="privacy-note"><strong>حریم خصوصی:</strong> اطلاعات این ابزار در همین مرورگر ذخیره می‌شود. هیچ تحلیلی خودکار انجام نمی‌شود و چیزی بدون اقدام شما به سرویس هوش مصنوعی ارسال نخواهد شد.</div>
+    <form id="profileForm" autocomplete="off">
+      <section class="panel"><h2><span>۰۱</span> اطلاعات کسب‌وکار</h2>
+        <label>نام کسب‌وکار یا پیج <b class="required">*</b><input id="businessName" required maxlength="100" placeholder="مثلاً کافه ..."></label>
+        <div class="grid2">
+          <label>نام کاربری اینستاگرام <input id="handle" dir="ltr" maxlength="100" placeholder="@username"></label>
+          <label>حوزه فعالیت<select id="industry"><option value="فروشگاهی">فروشگاهی</option><option value="خدماتی">خدماتی</option><option value="آموزشی">آموزشی</option><option value="شخصی">شخصی</option><option value="رستوران و کافه">رستوران و کافه</option><option value="زیبایی و سلامت">زیبایی و سلامت</option><option value="سایر">سایر</option></select></label>
+        </div>
+        <label>هدف اصلی<select id="goal"><option>افزایش فروش</option><option>جذب مشتری</option><option>افزایش بازدید</option><option>افزایش تعامل</option><option>برندسازی</option></select></label>
+        <label>مخاطب هدف <input id="audience" maxlength="500" placeholder="سن، نیاز، موقعیت یا ویژگی مخاطب (اختیاری)"></label>
+        <label>توضیحات تکمیلی درباره کسب‌وکار و خدمات <textarea id="businessNotes" rows="3" maxlength="3000" placeholder="مزیت‌ها، محصولات، محدوده خدمت‌رسانی و... (اختیاری)"></textarea></label>
+        <label>متن بیوگرافی اینستاگرام <textarea id="bio" rows="3" maxlength="1500" placeholder="متن فعلی بیو را وارد کنید (اختیاری)"></textarea></label>
+      </section>
+      <section class="panel"><h2><span>۰۲</span> تصاویر و آمار</h2>
+        <p class="muted">چند تصویر را از گالری انتخاب کنید. برای هر تصویر نوع و توضیح را مشخص کنید. تصاویر فقط در همین دستگاه نگهداری می‌شوند؛ برای حفظ فضای مرورگر، تصاویر بسیار حجیم را انتخاب نکنید.</p>
+        <label class="upload"> <span class="upload-icon">＋</span><span><strong>انتخاب تصاویر از گالری</strong><small>PNG، JPG، WEBP · امکان انتخاب چند تصویر</small></span><input id="imagePicker" type="file" accept="image/*" multiple></label>
+        <div id="imageList" class="image-list"><p class="empty">هنوز تصویری انتخاب نشده است.</p></div>
+        <label>آمار یا نکته‌ای که خارج از تصاویر می‌خواهید اضافه کنید <textarea id="extraStats" rows="3" maxlength="3000" placeholder="مثلاً آمار کلی پیج یا توضیح درباره زمان انتشار (اختیاری)"></textarea></label>
+      </section>
+      <section class="panel"><h2><span>۰۳</span> پرامپت تحلیل</h2>
+        <p class="muted">این مرحله فقط متن دستور تحلیل را می‌سازد؛ هنوز هیچ تحلیلی انجام نشده است.</p>
+        <div class="actions"><button id="buildPrompt" class="btn primary" type="button">ساخت پرامپت تحلیل</button><button id="clearAll" class="btn light" type="button">پاک‌کردن اطلاعات</button></div>
+        <div id="promptArea" hidden><label>پرامپت اختصاصی (قابل ویرایش)<textarea id="promptText" rows="18" spellcheck="false"></textarea></label>
+          <div class="actions"><button id="copyPrompt" class="btn dark" type="button">کپی پرامپت</button><button id="sharePrompt" class="btn outline" type="button">اشتراک‌گذاری پرامپت</button><button id="exportPrompt" class="btn outline" type="button">ذخیره متن پرامپت</button></div>
+          <p class="notice"><strong>مهم:</strong> برای تحلیل واقعی، پرامپت را به ChatGPT بفرستید و تصاویر انتخاب‌شده را نیز جداگانه همراه آن پیوست کنید. متن پرامپت به‌تنهایی برای تحلیل تصویر کافی نیست. ارسال تصاویر فقط با اقدام خود شما انجام می‌شود.</p>
+        </div>
+      </section>
+      <section class="panel"><h2><span>۰۴</span> گزارش نهایی و PDF</h2>
+        <p class="muted">پس از دریافت گزارش واقعی از ChatGPT، متن کامل آن را اینجا جای‌گذاری کنید. تا وقتی متن گزارش وارد نشده باشد، خروجی PDF فعال نیست.</p>
+        <label>متن گزارش نهایی<textarea id="reportText" rows="12" maxlength="50000" placeholder="گزارش نهایی دریافتی از ChatGPT را اینجا جای‌گذاری کنید..."></textarea></label>
+        <div class="grid2"><label>نام گزارش در فایل PDF<input id="reportBusiness" maxlength="100" placeholder="به‌صورت خودکار از نام کسب‌وکار پر می‌شود"></label><label>تاریخ گزارش<input id="reportDate" type="date"></label></div>
+        <div class="actions"><button id="makePdf" class="btn primary" type="button" disabled>آماده‌سازی PDF / چاپ</button><button id="shareReport" class="btn outline" type="button" disabled>اشتراک‌گذاری متن گزارش</button></div>
+        <p id="pdfHelp" class="muted small">برای گرفتن PDF، پنجره چاپ باز می‌شود. در آیفون از Share → Print و سپس پیش‌نمایش چاپ، گزینه اشتراک‌گذاری/ذخیره در Files را انتخاب کنید. تولید فایل PDF بومی و مستقیم در این نسخه استفاده نشده است.</p>
+      </section>
+      <section class="panel utility"><h2><span>۰۵</span> پشتیبان و نگهداری</h2><p class="muted">پاک‌کردن داده‌های مرورگر یا حذف وب‌اپ ممکن است اطلاعات محلی را از بین ببرد. قبل از تعویض دستگاه، پشتیبان بگیرید.</p><div class="actions"><button id="backup" class="btn outline" type="button">خروجی پشتیبان</button><label class="btn outline import-btn">بازیابی پشتیبان<input id="restore" type="file" accept="application/json,.json"></label></div><p id="status" role="status" aria-live="polite"></p></section>
+    </form>
+    <footer>هدرا · ابزار داخلی تحلیل محتوا <span>نسخه اولیه محلی</span></footer>
+  </main>
+  <section id="printSheet" class="print-sheet" aria-hidden="true"></section>
+  <script src="app.js"></script>
+</body></html>

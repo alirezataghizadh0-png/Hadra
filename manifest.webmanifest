@@ -1,0 +1,13 @@
+{
+  "name": "هدرا | تحلیل هوشمند پیج",
+  "short_name": "تحلیل هدرا",
+  "description": "ساخت پرامپت تحلیل پیج و آماده‌سازی گزارش فارسی در دستگاه",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f3",
+  "theme_color": "#17243b",
+  "icons": []
+}
